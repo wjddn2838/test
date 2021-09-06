@@ -36,5 +36,61 @@ public class StudentService {
 			JDBCTemplate.close(conn); //DB 연결해제
 		}
 		return result;
+	}
+
+	public Student printOneLogin(String userId, String userPwd) {
+		Student student = null;
+		Connection conn = null;
+		try {
+			conn = jdbcTemplate.createConnection();
+			student = new StudentDAO().selectOneLogin(conn, userId, userPwd);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return student;
+	}
+
+	public Student printOneById(String studentId) {
+		Student student = null;
+		Connection conn = null;
+		try {
+			conn = jdbcTemplate.createConnection();//연결생성함
+			student = new StudentDAO().selectOneById(conn, studentId);//연결 넘겨줌
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return student;
+	}
+
+	public int deleteStudent(String studentId) {
+		int result = 0;
+		Connection conn = null;
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new StudentDAO().deleteMember(conn, studentId);
+			if(result>0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public int modifyStudent(Student student) {
+		int result = 0;
+		Connection conn = null;
+		
+		result = new StudentDAO().updateMember(conn, student);
+		return result;
 	}	
 }

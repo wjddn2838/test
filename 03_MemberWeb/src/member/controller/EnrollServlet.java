@@ -40,6 +40,7 @@ public class EnrollServlet extends HttpServlet{
 		//4. 쿼리실행 결과를 가지고 성공/실패 여부에 따라서 view를 선택해서 보여줌
 		if(result>0) {
 			//가입성공 - 로그인 페이지
+			response.sendRedirect("/index.jsp");
 		}else {
 			//가입실패 - 실패 메시지
 			response.sendRedirect("/member/studentError.html");

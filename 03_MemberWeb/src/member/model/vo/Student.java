@@ -105,7 +105,4 @@ public class Student {
 				+ studentHobby + ", 등록일 = " + enrollDate + "]";
 	}
 	
-	
-	
-	
 }
