@@ -25,10 +25,10 @@
 	<h1><%= studentName %> 님 환영합니다.</h1>
 	<a href="/member/logout">로그아웃</a><br>
 	<a href="/member/myinfo?studentId=<%=studentId%>">마이페이지</a><br>
-	<a href="#">전체 회원조회</a><br>
+	<a href="/member/listAll">전체 회원조회</a><br>
 	<a href="#">파일 업로드</a><br>
 	<a href="#">파일 목록조회</a><br>
-	<a href="#">공지사항</a>
+	<a href="/notice/list">공지사항</a>
 	<% } %>
 </body>
 </html>

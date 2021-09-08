@@ -37,12 +37,22 @@ public class ModifyServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Student student = new Student();
+		request.setCharacterEncoding("UTF-8");
+		//userId, userPwd,userEmail,userPhone,userAddress,userHobby
+		String userId = request.getParameter("user-id");
+		String userPwd = request.getParameter("user-pwd");
+		String userEmail = request.getParameter("user-email");
+		String userPhone = request.getParameter("user-phone");
+		String userAddress = request.getParameter("user-address");
+		String userHobby = request.getParameter("user-hobby");
+		Student student = new Student(userId, userPwd, userEmail, userPhone, userAddress, userHobby);
 		int result = new StudentService().modifyStudent(student);
 		if(result>0) {
-			
+			//성공하면 메인페이지로 이동
+			response.sendRedirect("/index.jsp");
 		}else {
-			
+			//실패하면 실패페이지로 이동
+			response.sendRedirect("/member/studentError.html");
 		}
 	}
 

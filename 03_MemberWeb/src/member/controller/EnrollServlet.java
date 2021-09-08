@@ -16,12 +16,12 @@ import member.model.vo.Student;
 public class EnrollServlet extends HttpServlet{
 
 	public EnrollServlet() {}
-	
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String userId = request.getParameter("user-id");
-		String userPw = request.getParameter("user-pw");
+		String userPwd = request.getParameter("user-pwd");
 		String userName = request.getParameter("user-name");
 		int userAge = Integer.parseInt(request.getParameter("user-age"));
 		String userEmail = request.getParameter("user-email");
@@ -33,7 +33,7 @@ public class EnrollServlet extends HttpServlet{
 		//1. 입력받은 값을 Student 객체 저장해요
 //		Student student = new Student();
 //		student.setStudentId(userId);
-		Student student = new Student(userId, userPw, userName, userGender, userAge, userEmail, userPhone, userAddress, userHobby);
+		Student student = new Student(userId, userPwd, userName, userGender, userAge, userEmail, userPhone, userAddress, userHobby);
 		//2. Member객체를 Service,DAO로 넘겨서
 		//3. DB연결 후 쿼리 실행해서 정보를 디비에 저장
 		int result = new StudentService().registerStudent(student);
@@ -44,8 +44,7 @@ public class EnrollServlet extends HttpServlet{
 		}else {
 			//가입실패 - 실패 메시지
 			response.sendRedirect("/member/studentError.html");
-		}
-		
+		}		
 	}
 }
 		
@@ -55,6 +54,6 @@ public class EnrollServlet extends HttpServlet{
 //		response.setContentType("text/html; charset=utf-8");
 //		PrintWriter out = response.getWriter();
 //		out.println(userId + ", "+userPw+","+userName+","+userAge+","+userEmail+","+userPhone+","+userAddress+","+userGender+","+userHobby);
-//		
+
 
 		

@@ -34,6 +34,18 @@ public class Student {
 
 	}
 	
+	
+	public Student(String studentId, String studentPwd, String studentEmail, String studentPhone, String studentAddress,
+			String studentHobby) {
+		super();
+		this.studentId = studentId;
+		this.studentPwd = studentPwd;
+		this.studentEmail = studentEmail;
+		this.studentPhone = studentPhone;
+		this.studentAddress = studentAddress;
+		this.studentHobby = studentHobby;
+	}
+
 	// 게터/세터
 
 	public String getStudentId() {

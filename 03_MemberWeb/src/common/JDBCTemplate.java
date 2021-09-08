@@ -33,7 +33,7 @@ public class JDBCTemplate {
 		String user = "KHHUMAN";
 		String pwd = "KHHUMAN";
 		Connection conn = DriverManager.getConnection(url, user, pwd);
-		conn.setAutoCommit(false);
+		conn.setAutoCommit(false);//자동으로 커밋을 꺼둔 상태
 		return conn;
 	}
 	
